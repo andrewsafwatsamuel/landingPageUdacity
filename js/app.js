@@ -71,5 +71,4 @@ function setSectionClass(section, tab) {
         tab.classList.remove('active_tab')
         tab.classList.add('non_active_tab')
     }
-    console.log(`client height: ${section.clientHeight}, innerheight: ${innerHeight}`);
 }
