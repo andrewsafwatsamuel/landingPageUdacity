@@ -54,17 +54,22 @@ function scrollToSection(index) {
 
 // Set sections as active
 function onSectionScrolled() {
-    for (const section of sections) {
-        setSectionClass(section);
+    for (let i = 0; i < sections.length; i++) {
+        setSectionClass(sections[i], tabs[i]);
     }
 }
 
-function setSectionClass(section) {
+function setSectionClass(section, tab) {
 
     const sectionBoundaries = section.getBoundingClientRect();
-    if (sectionBoundaries.top > -1 && sectionBoundaries.top < innerHeight) {
+    if ((sectionBoundaries.top <= innerHeight / 1.4 && sectionBoundaries.top > -1) || (sectionBoundaries.bottom >= innerHeight / 1.4 && sectionBoundaries.bottom <= section.clientHeight)) {
         section.classList.add('your-active-class');
+        tab.classList.add('active_tab')
+        tab.classList.remove('non_active_tab')
     } else {
         section.classList.remove('your-active-class');
+        tab.classList.remove('active_tab')
+        tab.classList.add('non_active_tab')
     }
+    console.log(`client height: ${section.clientHeight}, innerheight: ${innerHeight}`);
 }
